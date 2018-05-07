@@ -113,7 +113,6 @@ public class DrawingTool {
                 w = Integer.parseInt(lineBreak[1]);
                 h = Integer.parseInt(lineBreak[2]);
                 canvas = new String[w][h];
-                draw(w, h, canvas);
                 fileWriter.append(getData(w, h, canvas));
             }
 
@@ -145,7 +144,6 @@ public class DrawingTool {
                         throw new RuntimeException("Unexpected command");
 
                 }
-                draw(w, h, canvas);
                 fileWriter.append(getData(w, h, canvas));
             }
             fileWriter.close();
