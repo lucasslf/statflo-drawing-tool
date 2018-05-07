@@ -61,12 +61,12 @@ public class DrawingTool {
             throw new RuntimeException("Bad rectangle command");
         } else {
             for (int i = x1; i <= x2; i++) {
-                canvas[i][y1] = "X";
-                canvas[i][y2] = "X";
+                canvas[i][y1] = "x";
+                canvas[i][y2] = "x";
             }
             for (int j = y1; j <= y2; j++) {
-                canvas[x1][j] = "X";
-                canvas[x2][j] = "X";
+                canvas[x1][j] = "x";
+                canvas[x2][j] = "x";
             }
         }
     }
@@ -77,14 +77,14 @@ public class DrawingTool {
         } else {
             for (int i = x1; i <= x2; i++) {
                 for (int j = y1; j <= y2; j++) {
-                    canvas[i][j] = "X";
+                    canvas[i][j] = "x";
                 }
             }
         }
     }
 
     static void fill(int x, int y, String c, String[][] canvas) {
-        if (x >= 0 && x < canvas.length && y >= 0 && y < canvas[0].length && !"X".equals(canvas[x][y]) && !c.equals(canvas[x][y])) {
+        if (x >= 0 && x < canvas.length && y >= 0 && y < canvas[0].length && !"x".equals(canvas[x][y]) && !c.equals(canvas[x][y])) {
             canvas[x][y] = c;
             fill(x - 1, y, c, canvas);
             fill(x + 1, y, c, canvas);
