@@ -36,7 +36,7 @@ public class DrawingTool {
 
     }
 
-    static String getData(int w, int h, String[][] canvas) {
+    public static String getData(int w, int h, String[][] canvas) {
         String s = "";
         for (int j = -1; j <= h; j++) {
             for (int i = -1; i <= w; i++) {
@@ -56,9 +56,11 @@ public class DrawingTool {
         return s;
     }
 
-    static void rect(int x1, int y1, int x2, int y2, String[][] canvas) {
+    public static void rect(int x1, int y1, int x2, int y2, String[][] canvas) {
         if (x1 > x2 || y1 > y2) {
             throw new RuntimeException("Bad rectangle command");
+        } else if (x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0 || x1 >= canvas.length || x2 >= canvas.length || y1 >= canvas[0].length || y2 >= canvas[0].length) {
+            throw new RuntimeException("Point out of bounds");
         } else {
             for (int i = x1; i <= x2; i++) {
                 canvas[i][y1] = "x";
@@ -71,9 +73,11 @@ public class DrawingTool {
         }
     }
 
-    static void line(int x1, int y1, int x2, int y2, String[][] canvas) {
+    public static void line(int x1, int y1, int x2, int y2, String[][] canvas) {
         if (x1 != x2 && y1 != y2) {
             throw new RuntimeException("Bad line command");
+        } else if (x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0 || x1 >= canvas.length || x2 >= canvas.length || y1 >= canvas[0].length || y2 >= canvas[0].length) {
+            throw new RuntimeException("Point out of bounds");
         } else {
             for (int i = x1; i <= x2; i++) {
                 for (int j = y1; j <= y2; j++) {
@@ -83,7 +87,7 @@ public class DrawingTool {
         }
     }
 
-    static void fill(int x, int y, String c, String[][] canvas) {
+    public static void fill(int x, int y, String c, String[][] canvas) {
         if (x >= 0 && x < canvas.length && y >= 0 && y < canvas[0].length && !"x".equals(canvas[x][y]) && !c.equals(canvas[x][y])) {
             canvas[x][y] = c;
             fill(x - 1, y, c, canvas);
