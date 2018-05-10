@@ -36,7 +36,7 @@ public class DrawingTool {
 
     }
 
-    public static String getData(int w, int h, String[][] canvas) {
+    public static String getDataToPrintWithMargin(int w, int h, String[][] canvas) {
         String s = "";
         for (int j = -1; j <= h; j++) {
             for (int i = -1; i <= w; i++) {
@@ -117,7 +117,7 @@ public class DrawingTool {
                 w = Integer.parseInt(lineBreak[1]);
                 h = Integer.parseInt(lineBreak[2]);
                 canvas = new String[w][h];
-                fileWriter.append(getData(w, h, canvas));
+                fileWriter.append(getDataToPrintWithMargin(w, h, canvas));
             }
 
             //Command sequence
@@ -148,7 +148,7 @@ public class DrawingTool {
                         throw new RuntimeException("Unexpected command");
 
                 }
-                fileWriter.append(getData(w, h, canvas));
+                fileWriter.append(getDataToPrintWithMargin(w, h, canvas));
             }
             fileWriter.close();
         } catch (IOException e) {
